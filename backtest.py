@@ -702,7 +702,7 @@ def jackrabbit(trades_list: [dict],
             continue
         print(f'\nk={k}, m={mutation_coefficient:.4f} candidate:\n', candidate)
         start_time = time()
-        trades = backtest(trades_list, settings)
+        trades = backtest_new(trades_list, settings)
         print('\ntime elapsed', round(time() - start_time, 1), 'seconds')
         k += 1
         if not trades:
