@@ -921,6 +921,7 @@ async def fetch_symbol_specific_data(exchange: str, user: str, symbol: str):
     settings_from_exchange['max_leverage'] = bot.max_leverage
     settings_from_exchange['min_qty'] = bot.min_qty
     settings_from_exchange['min_notional'] = bot.min_notional
+    settings_from_exchange['min_cost'] = bot.min_notional
     settings_from_exchange['qty_step'] = bot.qty_step
     settings_from_exchange['price_step'] = bot.price_step
     settings_from_exchange['max_leverage'] = bot.max_leverage
