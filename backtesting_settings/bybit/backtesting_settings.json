@@ -1,13 +1,13 @@
 {
-    "session_name": "btc_001_52_days_break_on_liq_diff_0.07",
-    "symbol": "BTCUSD",
+    "session_name": "eos_001",
+    "symbol": "EOSUSD",
     "n_days": 52,
 
     "starting_candidate_preference": ["best", "random", "given"],
     "starting_k": 0,
     "n_jackrabbit_iterations": 200,
 
-    "starting_balance": 0.001,
+    "starting_balance": 10.0,
     "market_stop_loss": false,
     "cross_mode": true,
     "do_long": true,
@@ -16,24 +16,24 @@
     "break_on": [
         ["OFF: break on first soft stop",
          "lambda trade, tick: trade['type'] == 'stop_loss'"],
-        ["ON: neg pnl sum",
+        ["OFF: neg pnl sum",
          "lambda trade, tick: trade['pnl_sum'] < 0.0 and trade['progress'] > 0.5"],
-        ["ON: liq diff too small",
+        ["OFF: liq diff too small",
          "lambda trade, tick: calc_diff(trade['liq_price'], tick['price']) < 0.07"],
-        ["ON: time between consec trades",
+        ["OFF: time between consec trades",
          "lambda trade, tick: tick['timestamp'] - trade['timestamp'] > 1000 * 60 * 60 * 24"],
         ["OFF: pos price last price diff",
          "lambda trade, tick: calc_diff(trade['price'], tick['price']) > 1.05"],
         ["OFF: adg too low",
          "lambda trade, tick: trade['average_daily_gain'] < 1.01 and trade['progress'] >= 0.5"],
-        ["ON: no soft stops",
+        ["OFF: no soft stops",
          "lambda trade, tick: trade['loss_sum'] == 0.0 and trade['progress'] >= 0.6"],
         ["OFF: balance + pnl below starting_balance",
          "lambda trade, tick: trade['actual_balance'] + trade['pnl_sum'] < 0.0"]
     ],
 
     "balance_pct": 0.444,
-    "ddown_factor": 1.43,
+    "ddown_factor": 0.5,
     "entry_qty_pct": 0.01,
     "min_close_qty_multiplier": 0.4,
     "leverage": 28.0,
@@ -45,7 +45,7 @@
     "min_markup": 0.00091,
 
     "ema_span": 8082.0,
-    "ema_spread": 0.0,
+    "ema_spread": 0.001,
 
     "stop_loss_liq_diff": 0.0435,
     "stop_loss_pos_price_diff": 0.0599,
